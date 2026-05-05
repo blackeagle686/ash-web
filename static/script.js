@@ -67,18 +67,12 @@
       });
     },
     {
-      threshold: 0.01,
+      threshold: 0.1,
+      rootMargin: "0px 0px -60px 0px",
     }
   );
 
-  revealElements.forEach((el) => {
-    revealObserver.observe(el);
-    // Immediate check for elements already in view
-    const rect = el.getBoundingClientRect();
-    if (rect.top < window.innerHeight && rect.bottom > 0) {
-      el.classList.add("visible");
-    }
-  });
+  revealElements.forEach((el) => revealObserver.observe(el));
 
   // ── Smooth scroll for anchor links ────────────────────────────────────
   document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
