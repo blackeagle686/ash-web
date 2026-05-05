@@ -5,15 +5,18 @@ Serves the static site and provides a download endpoint.
 
 import os
 from pathlib import Path
-from fastapi import FastAPI
+from fastapi import FastAPI, Request
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import HTMLResponse, FileResponse
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.templating import Jinja2Templates
 
 STATIC_DIR = Path(__file__).parent / "static"
+TEMPLATES_DIR = Path(__file__).parent / "templates"
 DIST_DIR = Path(__file__).parent.parent / "dist"
 
 app = FastAPI(title="Ashborn Landing Page", version="1.0.0")
+templates = Jinja2Templates(directory=str(TEMPLATES_DIR))
 
 app.add_middleware(
     CORSMiddleware,
@@ -24,31 +27,27 @@ app.add_middleware(
 
 
 @app.get("/", response_class=HTMLResponse)
-async def landing():
+async def landing(request: Request):
     """Serve the landing page."""
-    index = STATIC_DIR / "index.html"
-    return HTMLResponse(index.read_text(encoding="utf-8"))
+    return templates.TemplateResponse("index.html", {"request": request})
 
 
 @app.get("/pricing", response_class=HTMLResponse)
-async def pricing():
+async def pricing_page(request: Request):
     """Serve the pricing page."""
-    pricing_page = STATIC_DIR / "pricing.html"
-    return HTMLResponse(pricing_page.read_text(encoding="utf-8"))
+    return templates.TemplateResponse("pricing.html", {"request": request})
 
 
 @app.get("/login", response_class=HTMLResponse)
-async def login_page():
+async def login_page(request: Request):
     """Serve the login page."""
-    page = STATIC_DIR / "login.html"
-    return HTMLResponse(page.read_text(encoding="utf-8"))
+    return templates.TemplateResponse("login.html", {"request": request})
 
 
 @app.get("/register", response_class=HTMLResponse)
-async def register_page():
+async def register_page(request: Request):
     """Serve the register page."""
-    page = STATIC_DIR / "register.html"
-    return HTMLResponse(page.read_text(encoding="utf-8"))
+    return templates.TemplateResponse("register.html", {"request": request})
 
 
 @app.post("/api/login")
