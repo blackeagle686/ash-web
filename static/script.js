@@ -71,7 +71,14 @@
     }
   );
 
-  revealElements.forEach((el) => revealObserver.observe(el));
+  revealElements.forEach((el) => {
+    revealObserver.observe(el);
+    // Immediate check for elements already in view
+    const rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight && rect.bottom > 0) {
+      el.classList.add("visible");
+    }
+  });
 
   // ── Smooth scroll for anchor links ────────────────────────────────────
   document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
