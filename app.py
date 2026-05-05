@@ -29,25 +29,25 @@ app.add_middleware(
 @app.get("/", response_class=HTMLResponse)
 async def landing(request: Request):
     """Serve the landing page."""
-    return templates.TemplateResponse("index.html", {"request": request})
+    return templates.TemplateResponse(request=request, name="index.html")
 
 
 @app.get("/pricing", response_class=HTMLResponse)
 async def pricing_page(request: Request):
     """Serve the pricing page."""
-    return templates.TemplateResponse("pricing.html", {"request": request})
+    return templates.TemplateResponse(request=request, name="pricing.html")
 
 
 @app.get("/login", response_class=HTMLResponse)
 async def login_page(request: Request):
     """Serve the login page."""
-    return templates.TemplateResponse("login.html", {"request": request})
+    return templates.TemplateResponse(request=request, name="login.html")
 
 
 @app.get("/register", response_class=HTMLResponse)
 async def register_page(request: Request):
     """Serve the register page."""
-    return templates.TemplateResponse("register.html", {"request": request})
+    return templates.TemplateResponse(request=request, name="register.html")
 
 
 @app.post("/api/login")
