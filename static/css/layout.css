@@ -1,0 +1,199 @@
+/* ══════════════════════════════════════════════════════════════════════════
+   ASHBORN — Header & Navigation
+   ══════════════════════════════════════════════════════════════════════════ */
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  padding: 16px 0;
+  transition: background 0.3s, backdrop-filter 0.3s;
+}
+
+.header.scrolled {
+  background: rgba(8, 8, 12, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--glass-border);
+}
+
+.header .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 800;
+  font-size: 1.25rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+.header-brand img {
+  width: 36px;
+  height: 36px;
+  filter: drop-shadow(0 0 12px rgba(184,48,255,0.4));
+}
+
+.header-brand span {
+  background: var(--grad-hero);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.nav-links a {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  transition: color 0.3s;
+  letter-spacing: 0.5px;
+}
+
+.nav-links a:hover {
+  color: var(--text-primary);
+}
+
+.nav-cta {
+  padding: 10px 24px !important;
+  background: var(--grad-hero) !important;
+  border-radius: 50px !important;
+  color: white !important;
+  font-weight: 700 !important;
+  font-size: 0.85rem !important;
+  letter-spacing: 1px !important;
+  transition: transform 0.3s, box-shadow 0.3s !important;
+  box-shadow: 0 4px 20px rgba(184,48,255,0.3);
+}
+
+.nav-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(184,48,255,0.5);
+}
+
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.nav-toggle span {
+  width: 24px;
+  height: 2px;
+  background: var(--text-primary);
+  border-radius: 2px;
+  transition: transform 0.3s, opacity 0.3s;
+}
+
+
+/* ══════════════════════════════════════════════════════════════════════════
+   ASHBORN — Footer
+   ══════════════════════════════════════════════════════════════════════════ */
+
+.footer {
+  padding: 64px 0 32px;
+  border-top: 1px solid rgba(184,48,255,0.08);
+  background: linear-gradient(180deg, var(--bg-void) 0%, #060609 100%);
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 48px;
+  margin-bottom: 48px;
+}
+
+.footer-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.footer-brand img {
+  width: 32px;
+  height: 32px;
+  filter: drop-shadow(0 0 8px rgba(184,48,255,0.3));
+}
+
+.footer-brand span {
+  font-weight: 800;
+  letter-spacing: 2px;
+  background: var(--grad-hero);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.footer-about {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  line-height: 1.7;
+  max-width: 300px;
+}
+
+.footer-col h4 {
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--text-secondary);
+  margin-bottom: 20px;
+}
+
+.footer-col a {
+  display: block;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  padding: 6px 0;
+  transition: color 0.3s, padding-left 0.3s;
+}
+
+.footer-col a:hover {
+  color: var(--text-primary);
+  padding-left: 4px;
+}
+
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 32px;
+  border-top: 1px solid rgba(255,255,255,0.04);
+}
+
+.footer-bottom p {
+  color: var(--text-muted);
+  font-size: 0.8rem;
+}
+
+.footer-bottom-links {
+  display: flex;
+  gap: 24px;
+}
+
+.footer-bottom-links a {
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  transition: color 0.3s;
+}
+
+.footer-bottom-links a:hover {
+  color: var(--purple);
+}
