@@ -3,20 +3,18 @@ Ashborn Landing Page — FastAPI backend.
 Serves the static site and provides a download endpoint.
 """
 
-import os
 from pathlib import Path
-from fastapi import FastAPI, Request
+from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
-from fastapi.responses import HTMLResponse, FileResponse
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.templating import Jinja2Templates
+
+from backend.pages import router as pages_router
+from backend.api.auth import router as auth_router
+from backend.api.system import router as system_router
 
 STATIC_DIR = Path(__file__).parent / "static"
-TEMPLATES_DIR = Path(__file__).parent / "templates"
-DIST_DIR = Path(__file__).parent.parent / "dist"
 
 app = FastAPI(title="Ashborn Landing Page", version="1.0.0")
-templates = Jinja2Templates(directory=str(TEMPLATES_DIR))
 
 app.add_middleware(
     CORSMiddleware,
@@ -25,70 +23,13 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-
-@app.get("/", response_class=HTMLResponse)
-async def landing(request: Request):
-    """Serve the landing page."""
-    return templates.TemplateResponse(request=request, name="index.html")
-
-
-@app.get("/pricing", response_class=HTMLResponse)
-async def pricing_page(request: Request):
-    """Serve the pricing page."""
-    return templates.TemplateResponse(request=request, name="pricing.html")
-
-
-@app.get("/login", response_class=HTMLResponse)
-async def login_page(request: Request):
-    """Serve the login page."""
-    return templates.TemplateResponse(request=request, name="login.html")
-
-
-@app.get("/register", response_class=HTMLResponse)
-async def register_page(request: Request):
-    """Serve the register page."""
-    return templates.TemplateResponse(request=request, name="register.html")
-
-
-@app.post("/api/login")
-async def api_login(data: dict):
-    """Mock login API."""
-    return {"status": "success", "message": "Logged in successfully", "user": data.get("email")}
-
-
-@app.post("/api/register")
-async def api_register(data: dict):
-    """Mock register API."""
-    return {"status": "success", "message": "Registered successfully", "user": data.get("email")}
-
-
-@app.get("/download")
-async def download():
-    """Serve the latest Ashborn IDE bundle."""
-    bundle = DIST_DIR / "ashborn-ide-linux.tar.gz"
-    if bundle.exists():
-        return FileResponse(
-            str(bundle),
-            media_type="application/gzip",
-            filename="ashborn-ide-linux.tar.gz",
-        )
-    return {"status": "error", "message": "Build not available yet. Check back soon!"}
-
-
-@app.get("/api/stats")
-async def stats():
-    """Return basic project stats for the landing page."""
-    return {
-        "version": "0.1.0",
-        "tools": 10,
-        "brain_modules": 4,
-        "api_endpoints": 12,
-    }
-
+# Include modular routers
+app.include_router(pages_router)
+app.include_router(auth_router)
+app.include_router(system_router)
 
 # Mount static assets AFTER routes so they don't shadow /download etc.
 app.mount("/static", StaticFiles(directory=str(STATIC_DIR)), name="static")
-
 
 if __name__ == "__main__":
     import uvicorn
