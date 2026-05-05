@@ -30,6 +30,13 @@ async def landing():
     return HTMLResponse(index.read_text(encoding="utf-8"))
 
 
+@app.get("/pricing", response_class=HTMLResponse)
+async def pricing():
+    """Serve the pricing page."""
+    pricing_page = STATIC_DIR / "pricing.html"
+    return HTMLResponse(pricing_page.read_text(encoding="utf-8"))
+
+
 @app.get("/download")
 async def download():
     """Serve the latest Ashborn IDE bundle."""
