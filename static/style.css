@@ -184,7 +184,6 @@ ul { list-style: none; }
   display: flex;
   align-items: center;
   justify-content: center;
-  text-align: center;
   padding: 120px 24px 80px;
   overflow: hidden;
 }
@@ -232,7 +231,22 @@ ul { list-style: none; }
 .hero-content {
   position: relative;
   z-index: 2;
-  max-width: 800px;
+  max-width: var(--max-width);
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 64px;
+  align-items: center;
+}
+
+.hero-image-col {
+  display: flex;
+  justify-content: center;
+  animation: fadeIn 1s ease backwards 0.2s;
+}
+
+.hero-text-col {
+  text-align: left;
 }
 
 .hero-badge {
@@ -251,11 +265,11 @@ ul { list-style: none; }
 }
 
 .hero-logo {
-  width: 80px;
-  height: 80px;
-  margin: 0 auto 24px;
-  filter: drop-shadow(0 0 30px rgba(184,48,255,0.3));
-  animation: heroFloat 4s infinite ease-in-out, fadeIn 1s ease backwards 0.2s;
+  width: 100%;
+  max-width: 450px;
+  height: auto;
+  filter: drop-shadow(0 0 50px rgba(184,48,255,0.4));
+  animation: heroFloat 4s infinite ease-in-out;
 }
 
 @keyframes heroFloat {
@@ -301,7 +315,7 @@ ul { list-style: none; }
 .hero-actions {
   display: flex;
   gap: 12px;
-  justify-content: center;
+  justify-content: flex-start;
   flex-wrap: wrap;
   animation: fadeIn 1s ease backwards 0.8s;
 }
@@ -345,8 +359,8 @@ ul { list-style: none; }
 
 .hero-stats {
   display: flex;
-  justify-content: center;
-  gap: 32px;
+  justify-content: flex-start;
+  gap: 40px;
   margin-top: 48px;
   animation: fadeIn 1s ease backwards 1s;
 }
