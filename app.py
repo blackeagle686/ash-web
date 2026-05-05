@@ -37,6 +37,32 @@ async def pricing():
     return HTMLResponse(pricing_page.read_text(encoding="utf-8"))
 
 
+@app.get("/login", response_class=HTMLResponse)
+async def login_page():
+    """Serve the login page."""
+    page = STATIC_DIR / "login.html"
+    return HTMLResponse(page.read_text(encoding="utf-8"))
+
+
+@app.get("/register", response_class=HTMLResponse)
+async def register_page():
+    """Serve the register page."""
+    page = STATIC_DIR / "register.html"
+    return HTMLResponse(page.read_text(encoding="utf-8"))
+
+
+@app.post("/api/login")
+async def api_login(data: dict):
+    """Mock login API."""
+    return {"status": "success", "message": "Logged in successfully", "user": data.get("email")}
+
+
+@app.post("/api/register")
+async def api_register(data: dict):
+    """Mock register API."""
+    return {"status": "success", "message": "Registered successfully", "user": data.get("email")}
+
+
 @app.get("/download")
 async def download():
     """Serve the latest Ashborn IDE bundle."""
