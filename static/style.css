@@ -239,6 +239,19 @@ ul { list-style: none; }
   align-items: center;
 }
 
+.hero-content.centered {
+  display: block;
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.hero-content.centered .hero-badge,
+.hero-content.centered .hero-subtitle {
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .hero-image-col {
   display: flex;
   justify-content: center;
