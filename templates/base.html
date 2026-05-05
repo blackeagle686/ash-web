@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}Ashborn Agent — The Ultimate Autonomous Architect{% endblock %}</title>
+  <meta name="description" content="{% block description %}Ashborn is a fully autonomous AI development agent that thinks, plans, executes, and reflects. Built on the Phoenix AI Framework.{% endblock %}">
+  <link rel="stylesheet" href="/static/style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="icon" href="/static/fire_emoji_svg.svg" type="image/svg+xml">
+  {% block extra_head %}{% endblock %}
+</head>
+<body>
+
+  {% include "partials/header.html" %}
+
+  <main>
+    {% block content %}{% endblock %}
+  </main>
+
+  {% include "partials/footer.html" %}
+
+  <script src="/static/script.js"></script>
+  {% block extra_script %}{% endblock %}
+</body>
+</html>
