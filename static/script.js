@@ -16,15 +16,6 @@
     }
   });
 
-  // ── Active link detection ─────────────────────────────────────────────
-  const currentPath = window.location.pathname;
-  navLinks.querySelectorAll("a").forEach((link) => {
-    const linkPath = link.getAttribute("href");
-    if (currentPath === linkPath || (currentPath === "/" && linkPath === "/")) {
-      link.classList.add("active");
-    }
-  });
-
   // ── Mobile nav toggle ─────────────────────────────────────────────────
   const navToggle = document.getElementById("nav-toggle");
   const navLinks = document.getElementById("nav-links");
