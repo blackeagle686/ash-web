@@ -238,8 +238,12 @@
       requestAnimationFrame(animate);
     }
 
+    resize();
     init();
     animate();
-    window.addEventListener("resize", init);
+    window.addEventListener("resize", () => {
+      resize();
+      init();
+    });
   }
 })();
