@@ -142,11 +142,14 @@
   if (canvas) {
     const ctx = canvas.getContext("2d");
     let particles = [];
-    let mouse = { x: null, y: null, radius: 150 };
+    let mouse = { x: null, y: null, radius: 180 }; // Increased radius for better interaction
 
     function resize() {
-      canvas.width = canvas.offsetWidth;
-      canvas.height = canvas.offsetHeight;
+      // Ensure canvas takes full size of the container
+      const parent = canvas.parentElement;
+      canvas.width = parent.offsetWidth;
+      canvas.height = parent.offsetHeight;
+      init(); // Re-init particles on resize to maintain density
     }
 
     window.addEventListener("resize", resize);
@@ -187,7 +190,9 @@
 
     function init() {
       particles = [];
-      const count = (canvas.width * canvas.height) / 9000;
+      // Adjust density based on screen area
+      const area = canvas.width * canvas.height;
+      const count = Math.min(area / 8000, 150); // Cap at 150 for performance
       for (let i = 0; i < count; i++) {
         particles.push(new Particle());
       }
@@ -200,9 +205,9 @@
           const dy = particles[a].y - particles[b].y;
           const distance = Math.sqrt(dx * dx + dy * dy);
 
-          if (distance < 100) {
-            let opacity = 1 - distance / 100;
-            ctx.strokeStyle = `rgba(184, 48, 255, ${opacity * 0.2})`;
+          if (distance < 120) { // Increased distance
+            let opacity = 1 - distance / 120;
+            ctx.strokeStyle = `rgba(184, 48, 255, ${opacity * 0.25})`; // Slightly more visible
             ctx.lineWidth = 1;
             ctx.beginPath();
             ctx.moveTo(particles[a].x, particles[a].y);
@@ -218,7 +223,7 @@
           const mdist = Math.sqrt(mdx * mdx + mdy * mdy);
           if (mdist < mouse.radius) {
             let opacity = 1 - mdist / mouse.radius;
-            ctx.strokeStyle = `rgba(255, 123, 0, ${opacity * 0.4})`;
+            ctx.strokeStyle = `rgba(255, 123, 0, ${opacity * 0.5})`; // Brighter mouse interaction
             ctx.beginPath();
             ctx.moveTo(particles[a].x, particles[a].y);
             ctx.lineTo(mouse.x, mouse.y);
@@ -238,8 +243,8 @@
       requestAnimationFrame(animate);
     }
 
-    init();
+    resize(); // Initial call
     animate();
-    window.addEventListener("resize", init);
+    window.addEventListener("resize", resize);
   }
 })();
