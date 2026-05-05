@@ -1025,6 +1025,103 @@ ul { list-style: none; }
   -webkit-text-fill-color: transparent;
 }
 
+/* ══════════════════════════════════════════════════════════════════════════
+   AUTH PAGES (Login / Register)
+   ══════════════════════════════════════════════════════════════════════════ */
+
+.auth-section {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 120px 24px;
+  position: relative;
+  overflow: hidden;
+}
+
+.auth-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--glass-border);
+  border-radius: 24px;
+  padding: 48px;
+  width: 100%;
+  max-width: 450px;
+  position: relative;
+  z-index: 2;
+  box-shadow: 0 20px 80px rgba(0,0,0,0.4);
+}
+
+.auth-header {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.auth-header h2 {
+  font-size: 1.75rem;
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+
+.auth-header p {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-group label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-left: 4px;
+}
+
+.form-input {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(184, 48, 255, 0.15);
+  border-radius: 12px;
+  padding: 12px 16px;
+  color: var(--text-primary);
+  font-size: 0.95rem;
+  transition: all 0.3s;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: var(--purple);
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 0 15px rgba(184, 48, 255, 0.2);
+}
+
+.auth-footer {
+  text-align: center;
+  margin-top: 24px;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.auth-footer a {
+  color: var(--purple);
+  font-weight: 600;
+  transition: color 0.3s;
+}
+
+.auth-footer a:hover {
+  color: var(--orange);
+}
+
 .pricing-card.popular .btn-primary {
   box-shadow: 0 10px 40px rgba(184, 48, 255, 0.5);
 }
