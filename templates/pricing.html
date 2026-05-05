@@ -1,0 +1,115 @@
+{% extends "base.html" %}
+
+{% block title %}Pricing — Ashborn Agent{% endblock %}
+
+{% block content %}
+  <!-- ═══════════════════════════════════════════════════════════════════════
+       PRICING HERO
+       ═══════════════════════════════════════════════════════════════════════ -->
+  <section class="hero" style="min-height: 60vh; padding-bottom: 40px;">
+    <canvas id="hero-canvas"></canvas>
+    <div class="hero-content centered">
+      <div class="hero-badge">Transparent Plans</div>
+      <h1>Choose Your <span class="gradient-text">Manifestation Tier</span></h1>
+      <p class="hero-subtitle">
+        Scale your autonomous development with plans designed for individuals,
+        teams, and organizations.
+      </p>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════════
+       PRICING PLANS
+       ═══════════════════════════════════════════════════════════════════════ -->
+  <section class="section" style="padding-top: 0;">
+    <div class="container">
+      <div class="pricing-grid">
+        
+        <!-- FREE PLAN -->
+        <div class="pricing-card reveal">
+          <div class="pricing-header">
+            <div class="plan-name">Free</div>
+            <div class="plan-price">$0<span>/mo</span></div>
+            <p class="plan-desc">For individual developers and hobbyists.</p>
+          </div>
+          <ul class="pricing-features">
+            <li>
+              <i class="bi bi-check-lg"></i>
+              Standard Brain Modules
+            </li>
+            <li>
+              <i class="bi bi-check-lg"></i>
+              Local Execution Only
+            </li>
+            <li>
+              <i class="bi bi-check-lg"></i>
+              Community Support
+            </li>
+            <li>
+              <i class="bi bi-check-lg"></i>
+              MIT Licensed Core
+            </li>
+          </ul>
+          <a href="/download" class="btn btn-secondary" style="width: 100%; justify-content: center;">Download Now</a>
+        </div>
+
+        <!-- MID PLAN (PRO) -->
+        <div class="pricing-card popular reveal">
+          <div class="pricing-header">
+            <div class="plan-name">Pro</div>
+            <div class="plan-price">$29<span>/mo</span></div>
+            <p class="plan-desc">Advanced features for professional architects.</p>
+          </div>
+          <ul class="pricing-features">
+            <li>
+              <i class="bi bi-check-lg"></i>
+              Enhanced Planning Engine
+            </li>
+            <li>
+              <i class="bi bi-check-lg"></i>
+              Cloud Project Sync
+            </li>
+            <li>
+              <i class="bi bi-check-lg"></i>
+              Priority Tool-Use Access
+            </li>
+            <li>
+              <i class="bi bi-check-lg"></i>
+              Email Support
+            </li>
+          </ul>
+          <a href="#" class="btn btn-primary" style="width: 100%; justify-content: center;">Start 7-Day Trial</a>
+        </div>
+
+        <!-- HIGH PLAN (ENTERPRISE) -->
+        <div class="pricing-card high reveal">
+          <div class="pricing-header">
+            <div class="plan-name">Enterprise</div>
+            <div class="plan-price">Custom</div>
+            <p class="plan-desc">Bespoke AI solutions for organizations.</p>
+          </div>
+          <ul class="pricing-features">
+            <li>
+              <i class="bi bi-check-lg"></i>
+              Custom Brain Modules
+            </li>
+            <li>
+              <i class="bi bi-check-lg"></i>
+              On-Premise Deployment
+            </li>
+            <li>
+              <i class="bi bi-check-lg"></i>
+              Dedicated Architect Support
+            </li>
+            <li>
+              <i class="bi bi-check-lg"></i>
+              SLA & Security Audits
+            </li>
+          </ul>
+          <a href="mailto:mathematecs1@gmail.com" class="btn btn-secondary" style="width: 100%; justify-content: center;">Contact Sales</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+{% endblock %}
