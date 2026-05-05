@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block title %}Register — Ashborn Agent{% endblock %}
+
+{% block content %}
+  <section class="auth-section">
+    <canvas id="hero-canvas"></canvas>
+    
+    <div class="auth-card reveal visible">
+      <div class="auth-header">
+        <h2>Join Ashborn</h2>
+        <p>Start your autonomous development journey</p>
+      </div>
+
+      <form class="auth-form" id="register-form">
+        <div class="form-group">
+          <label for="name">Full Name</label>
+          <input type="text" id="name" class="form-input" placeholder="John Doe" required>
+        </div>
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" class="form-input" placeholder="name@example.com" required>
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" class="form-input" placeholder="••••••••" required>
+        </div>
+        <button type="submit" class="btn btn-primary" style="margin-top: 10px; justify-content: center;">
+          Create Account
+        </button>
+      </form>
+
+      <div class="auth-footer">
+        Already have an account? <a href="/login">Login</a>
+      </div>
+    </div>
+  </section>
+{% endblock %}
+
+{% block extra_script %}
+  <script>
+    document.getElementById('register-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+      
+      const response = await fetch('/api/register', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, email, password })
+      });
+      
+      const result = await response.json();
+      if (result.status === 'success') {
+        alert('Account created for ' + result.user + '!');
+        window.location.href = '/login';
+      }
+    });
+  </script>
+{% endblock %}
